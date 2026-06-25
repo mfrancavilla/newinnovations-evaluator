@@ -5,16 +5,7 @@ A bookmarklet to automatically fill evaluation forms on New Innovations based on
 ---
 
 ## Install
-### One‑click install
 
-Drag the button below to your bookmarks bar:
-
-<a href="javascript:(function(){const t=&quot;https://www.new-innov.com/EvaluationForms/EvaluationFormsHost.aspx&quot;;if(!location.href.startsWith(t)){alert(&quot;Redirecting to evaluation page. After login/load, click bookmark again.&quot;);location.href=t;return;}console.clear();const O={0:&quot;Never&quot;,1:&quot;Rarely&quot;,2:&quot;Sometimes&quot;,3:&quot;Often&quot;,4:&quot;Consistently&quot;,5:&quot;Always&quot;};let p=Array.from(document.querySelectorAll(&quot;.mi-detail-item&quot;)).find(e=&gt;/PL-\d/.test(e.textContent)),d=p?parseInt(p.textContent.match(/PL-(\d)/)[1]):null;if(d===null){console.error(&quot;PL not found&quot;);return;}let i=prompt(`Detected PL-${d}\nEnter score (0–5):`,d),c=i!==null&amp;&amp;i!==&quot;&quot;?Math.max(0,Math.min(5,parseInt(i))):d,b=document.querySelectorAll(&quot;.rating-scale-content&quot;),f=0;b.forEach(x=&gt;{let s=x.querySelectorAll(&quot;.slick-slide&quot;),t=s[c];if(!t)return;let r=t.querySelector(&quot;input[type='radio']&quot;);r&amp;&amp;(r.checked=true,r.dispatchEvent(new Event(&quot;change&quot;,{bubbles:true})),r.dispatchEvent(new Event(&quot;click&quot;,{bubbles:true})),f++)});let e=document.querySelector(&quot;.mi-evaluator&quot;);if(!e){console.warn(&quot;mi-evaluator not found&quot;);return;}let ex=document.getElementById(&quot;auto-fill-status&quot;);ex&amp;&amp;ex.remove();let st=document.createElement(&quot;div&quot;);st.id=&quot;auto-fill-status&quot;;st.textContent=`Auto-filled ${f} with &quot;${O[c]}&quot; (PL-${d})`;st.style.color=&quot;red&quot;;st.style.fontWeight=&quot;bold&quot;;st.style.marginTop=&quot;8px&quot;;e.appendChild(st);})();" 
-style="display:inline-block;padding:10px 16px;background:#2563eb;color:#fff;border-radius:8px;text-decoration:none;font-weight:bold;">
-Install Auto‑Fill Bookmarklet
-</a>
-
-### Manual installation:
 1. Create a new bookmark in your browser. Add it to the bookmark bar for convenience.
 2. Name it something like:  
    `Auto Fill Evaluations`  
